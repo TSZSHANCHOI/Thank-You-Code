@@ -1,24 +1,31 @@
-//Click and Drag your cursor to "carve" the pumpkins
-
-PImage img;
+PImage img; 
+float circleX;
+float speed = 9;
 
 void setup() {
-  size(800, 500);
-  img = loadImage("pumpkins.png");
-  image(img, 0, 0);
+  size(700,700);
+  frameRate(10);
+  img = loadImage("carr.jpg");
 }
-
-void draw() 
-{
-  save("YOURNAME.Halloween.png");
+void draw(){ 
+  background(255);
+  image(img,circleX,300,550,300);
+   circleX = circleX +speed;
+if ( circleX >700){
+  circleX = -15;
 }
-
-void mouseDragged()
-{
-  //"Carves" the pumpkins
-  //blendMode optional, might be problematic with a light or white background
-  blendMode(OVERLAY); 
-  noStroke();
-  fill(255, 200, 25);
-  ellipse(mouseX, mouseY, 5, 5);
+if (circleX<0){
+  circleX = 15;
+}
+  fill(255,255,0);
+  ellipse(mouseX,70,100,100);
+  
+fill(random(100,150));
+textSize(70);
+text("THANK YOU DAD",70,340);
+fill(0);
+noStroke();
+ellipse(540,300,15,15);
+ellipse(640,300,15,15);
+fill(102);
 }
